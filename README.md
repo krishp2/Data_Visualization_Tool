@@ -23,6 +23,8 @@ Matplotlib
 Plotly
 Iplot
 Scatter plot
+
+
 Functions used:
 
 Collection- 
