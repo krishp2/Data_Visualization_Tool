@@ -1,0 +1,205 @@
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame()
+x = ""
+y = ""
+z = ""
+
+print("Hello, This program will help you to make interactive two and three dimensional graphs.")
+print("This program can take input from a website, excel file, csv file or a Sql server and")
+print("create an interactive graph on a default browser and save screenshots of the same.")
+
+
+def collection():
+    typ = input("Select document type \n 1. Excel \n 2. Csv \n 3. Sql \n 4.Website \n press 0 to try again\n")
+
+    # To take the location of the document for the excel and csv file
+    if typ == "1" or typ == "2" or typ == "excel" or typ == "2" or typ == "csv":
+
+        print("For convenience you can save the document on desktop and just enter the name of the file")
+        print("If its saved somewhere else then kindly just enter the location of the document")
+
+        location = input("Enter document location : ")
+        if len(location) < 10:
+            location = r"C:\Users\krish\Desktop\\" + location
+
+    # To take input as an excel file
+    if typ == "1" or typ.lower() == "excel":
+
+        global df
+        location = location + ".xlsx"
+        df = pd.read_excel(location)
+        print(df)
+
+    # To take input as an csv file
+    elif typ == "2" or typ.lower() == "csv":
+
+        location = location + ".csv"
+        df = pd.read_csv(location, ".csv")
+        print(df)
+
+    # To take input from sql server
+    elif typ == "3" or typ.lower() == "sql":
+        import mysql.connector as c
+        h = input("Enter the host : ")
+        u = input("Enter the user : ")
+        p = input("Enter the password : ")
+        d = input("Enter the database : ")
+        db = c.connect(host=h, user=u, passwd=p, database=d)
+        t = input("Enter the table name : ")
+        table_name = "select * from " + t
+        df = pd.read_sql(table_name, con=db)
+        print(df)
+
+    # To take input from an html source
+    elif typ == "4" or typ.lower() == "website":
+        location = input("Enter the url of the DataFrame : ")
+        df = pd.read_html(location)
+
+    elif typ == "0":
+        collection()
+
+    else:
+        print("Wrong file location. Please try again\n")
+        collection()
+
+
+def axis():
+    global x
+    global y
+
+    # taking x as input
+    x = input("Enter the column name you want as x axis : ")
+
+    # to check if x is in the database
+    if x not in list(df.columns):
+        print("Invalid input for x axis")
+        print("Please try again")
+        axis()
+
+    while True:
+
+        # taking y as input
+        y = input("Enter the column name you want as y axis : ")
+
+        # To check if y id in the database
+        if y not in list(df.columns):
+
+            print("Invalid input for y axis")
+ print("Please try again")
+
+        else:
+            break
+
+
+def graphs2d():
+    import plotly.graph_objects as go
+    import plotly.io as pio
+    pio.renderers.default = "browser"
+
+    opt = input("Type of graph \n 1. Scatter \n 2. histogram \n 3. bar \n 4. box \n 5. Heat  \n go back press 0 and 9 "
+                "to exit \n")
+
+    if opt == "1" or opt == "Scatter plot":
+        fig = go.Figure(go.Scatter(x=df[x], y=df[y]))
+        # To display a 2D scatter plot of the given data
+
+    elif opt == "2" or opt == "histogram":
+        fig = go.Figure(go.Histogram(x=df[x], y=df[y]))
+        # To display a 2D histogram of the given data
+
+    elif opt == "3" or opt == "bar":
+        fig = go.Figure(go.Bar(x=df[x], y=df[y]))
+        # To display a 2D bar graph of the given data
+
+    elif opt == "4" or opt == "box":
+        fig = go.Figure(go.Box(x=df[x], y=df[y]))
+        # To display a box graph of the given data
+
+    elif opt == "5" or opt == "spread":
+        fig = go.Figure(go.Heatmap(x=df[x], y=df[y]))
+        # To display a 2D spread graph of the given data
+
+
+    elif opt == "0":
+        main()
+        # To go back
+
+    elif opt == "9":
+        print("Thanks for using the program")
+        # To exit
+
+    else:
+        print("Error; Try again")
+    fig.show()
+    graphs2d()
+
+
+def graphs3d():
+    import plotly.graph_objects as go
+    import plotly.io as pio
+    pio.renderers.default = "browser"
+
+    opt = input("Type of 3D graph \n 1. Scatter \n 2. Mesh \n go back press 0 and 9 to exit \n")
+    if opt == "1" or opt == "scatter":
+        fig = go.Figure(go.Scatter3d(x=df[x], y=df[y], z=df[z]))
+        # To display a 3D scatter plot of the given data
+
+    elif opt == "2" or opt == "mesh":
+        fig = go.Figure(go.Surface(x=df[x], y=df[y], z=df[z]))
+        # To display a 3D mesh graph of the given data
+
+    elif opt == "0":
+        main()
+
+    elif opt == "9":
+        print("Thanks for using the program.")
+
+    else:
+        print("Error; Try again")
+        graphs3d()
+
+    fig.show()
+    graphs3d()
+
+
+def main():
+    print("------------------MENU--------------------")
+    print("\nPlease select one of the options.")
+    opt = ""
+
+    while opt != "exit" or opt != "0":
+        opt = input(" 1. 2D Graphs \n 2. 3D Graphs \n To go back press anything else \n")
+
+        if opt == "1" or opt.lower() == "2D Graphs":
+            collection()
+            axis()
+            graphs2d()
+
+        elif opt == "2" or opt.lower() == "3D Graphs":
+            collection()
+            axis()
+
+            # To input z axis value
+     global z
+            while True:
+                z = input("Enter the column name you want as z axis : ")
+
+                # To check if z id in the database
+                if z not in list(df.columns):
+
+                    print("invalid input for z axis")
+                    print("Please try again")
+
+                else:
+                    break
+
+            graphs3d()
+
+        else:
+            print("END OF PROGRAM")
+            break
+
+
+main()
