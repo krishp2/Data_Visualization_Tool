@@ -1,21 +1,28 @@
-# Multi_Dimentional_Graph_Generator
-This program allows user to input data from SQL, Excel, CSV or any website and choose their preferred axis to create interactive 2-d or 3-d graph. The graph can be a scatter plot, a box graph, a bar graph, etc.
-Hardware Specification:
-This project was made on the system with the following configuration:
-Intel Pentium processor and above
-Windows 7 or higher
-2 GB RAM and above
+Program Overview:
 
-Software Specification:
-The following are the software specifications of the program:
-PyCharm
+This program empowers users to seamlessly input data from SQL databases, Excel, CSV files, or any website of their choice. They can then select their desired axes to generate interactive 2D or 3D graphs, including scatter plots, box graphs, and bar graphs.
 
-Project Objective:
-This program allows user to input data from SQL, Excel, CSV or any website and choose their preferred axis to create interactive 2-d or 3-d graph. The graph can be a scatter plot, a box graph, a bar graph, etc.
+System Specifications:
 
-Project usage:
-The project can be used by business to create graphs easy which are interactive and helps to present data to other clients. One can zoom in the graph, can download the graph, hover over points and many other features.
-Packages involved:
+Hardware:
+
+Processor: Intel Pentium or higher
+Operating System: Windows 7 or above
+RAM: 2 GB or more
+Software:
+
+IDE: PyCharm
+Key Features:
+
+Flexible Data Input: Supports data input from SQL, Excel, CSV, or websites.
+Interactive Graphs: Enables users to create interactive 2D and 3D graphs.
+Graph Types: Offers various graph types like scatter plots, box graphs, bar graphs, etc.
+Usage:
+
+Businesses can utilize this program to effortlessly create interactive graphs for presenting data to clients. The application provides features such as zoom functionality, graph downloads, hover-over points, and more.
+
+Packages Utilized:
+
 Pandas
 Numpy
 Mysql.connector
@@ -23,22 +30,10 @@ Matplotlib
 Plotly
 Iplot
 Scatter plot
+Key Functions:
 
-
-Functions used:
-
-Collection- 
-This function collets data from SQL server, excel file, csv file, or a website
-
-Axis-
-This function takes input for the axis and check if they are valid or not
-
-Graphs2d-
-This function allows the user to choose between different type of 2d graphs
-
-Graphs3d-
-This function allows the user to choose between different type of 3d graphs
-
-Main-
-This function calls all the other function.
-
+Collection: Gathers data from SQL servers, Excel, CSV files, or websites.
+Axis: Validates and processes user input for graph axes.
+Graphs2D: Allows users to choose and create various types of 2D graphs.
+Graphs3D: Allows users to choose and create various types of 3D graphs.
+Main: Orchestrates and calls all other functions
