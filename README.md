@@ -1,10 +1,10 @@
-Program Overview:
+# Program Overview:
 
 This program empowers users to seamlessly input data from SQL databases, Excel, CSV files, or any website of their choice. They can then select their desired axes to generate interactive 2D or 3D graphs, including scatter plots, box graphs, and bar graphs.
 
-System Specifications:
+# System Specifications:
 
-Hardware:
+# Hardware:
 
 Processor: Intel Pentium or higher
 Operating System: Windows 7 or above
@@ -12,7 +12,7 @@ RAM: 2 GB or more
 Software:
 
 IDE: PyCharm
-Key Features:
+# Key Features:
 
 Flexible Data Input: Supports data input from SQL, Excel, CSV, or websites.
 Interactive Graphs: Enables users to create interactive 2D and 3D graphs.
@@ -21,7 +21,7 @@ Usage:
 
 Businesses can utilize this program to effortlessly create interactive graphs for presenting data to clients. The application provides features such as zoom functionality, graph downloads, hover-over points, and more.
 
-Packages Utilized:
+# Packages Utilized:
 
 Pandas
 Numpy
